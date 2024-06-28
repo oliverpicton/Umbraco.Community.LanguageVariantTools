@@ -34,12 +34,8 @@ jobs:
       - name: Restore package dependencies
         run: nuget restore $PROJECT
 
-      - name: Restore test dependencies
-        run: nuget restore $TESTPROJECT
-
       - name: Build package
         run: dotnet build $PROJECT -c $BUILD_CONFIG -p:Version=$BUILD_VERSION --no-restore
-
         
       - uses: actions/upload-artifact@v3  # upload test results
         if: success() || failure()        # run this step even if previous step failed
