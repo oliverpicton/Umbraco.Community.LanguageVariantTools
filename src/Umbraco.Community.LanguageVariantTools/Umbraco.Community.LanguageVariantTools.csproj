@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<PackageId>Umbraco.Community.LanguageVariantTools</PackageId>
+		<Product>Umbraco.Community.LanguageVariantTools</Product>
+		<Title>Language variant tools for Umbraco</Title>
+		<Description>Tools for working with language variants in Umbraco. Adds the ability to copy and remove language variants.</Description>
+		<PackageTags>umbraco plugin package umbraco-marketplace Language Variant Multi Language Copy Variants Remove Variants</PackageTags>
+		<StaticWebAssetBasePath>App_Plugins/LanguageVariantTools</StaticWebAssetBasePath>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Version>1.0.0</Version>
+		<Authors>Oliver Picton</Authors>
+		<Copyright>$([System.DateTime]::UtcNow.ToString(`yyyy`)) © Oliver Picton</Copyright>
+		<PackageProjectUrl>https://github.com/GitHubUser/GitHubRepo</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/GitHubUser/GitHubRepo</RepositoryUrl>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+		<PackageReference Include="Umbraco.Cms.Web.Website" Version="10.*" />
+		<PackageReference Include="Umbraco.Cms.Web.Common" Version="10.*" />
+		<PackageReference Include="Umbraco.Cms.Core" Version="10.*" />
+		<PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="10.*" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+		<PackageReference Include="Umbraco.Cms.Web.Website" Version="11.*" />
+		<PackageReference Include="Umbraco.Cms.Web.Common" Version="11.*" />
+		<PackageReference Include="Umbraco.Cms.Core" Version="11.*" />
+		<PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="11.*" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
+		<PackageReference Include="Umbraco.Cms.Web.Website" Version="13.*" />
+		<PackageReference Include="Umbraco.Cms.Web.Common" Version="13.*" />
+		<PackageReference Include="Umbraco.Cms.Core" Version="13.*" />
+		<PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="13.*" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="Readme.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+</Project>
