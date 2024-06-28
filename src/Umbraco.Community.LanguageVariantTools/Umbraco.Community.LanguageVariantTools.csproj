@@ -16,7 +16,7 @@
 		<Copyright>$([System.DateTime]::UtcNow.ToString(`yyyy`)) © Oliver Picton</Copyright>
 		<PackageProjectUrl>https://github.com/GitHubUser/GitHubRepo</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/GitHubUser/GitHubRepo</RepositoryUrl>
-		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<PackageReadmeFile>Readme.md</PackageReadmeFile>
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RootNamespace>Umbraco.Community.LanguageVariantTools</RootNamespace>
