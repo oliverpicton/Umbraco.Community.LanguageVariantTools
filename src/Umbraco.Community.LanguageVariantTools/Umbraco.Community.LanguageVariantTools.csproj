@@ -14,8 +14,8 @@
 		<Version>1.0.0</Version>
 		<Authors>Oliver Picton</Authors>
 		<Copyright>$([System.DateTime]::UtcNow.ToString(`yyyy`)) © Oliver Picton</Copyright>
-		<PackageProjectUrl>https://github.com/GitHubUser/GitHubRepo</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/GitHubUser/GitHubRepo</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/oliverpicton/Umbraco.Community.LanguageVariantTools</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/oliverpicton/Umbraco.Community.LanguageVariantTools</RepositoryUrl>
 		<PackageReadmeFile>Readme.md</PackageReadmeFile>
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
