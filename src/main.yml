@@ -36,9 +36,6 @@ jobs:
       - name: Build package
         run: dotnet build $PROJECT -c $BUILD_CONFIG -p:Version=$BUILD_VERSION --no-restore
         
-      - uses: actions/upload-artifact@v3  # upload test results
-        if: success() || failure()        # run this step even if previous step failed
-
       - name: Publish
         if: github.event_name == 'release'
         run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
