@@ -35,9 +35,6 @@ jobs:
 
       - name: Restore package dependencies
         run: nuget restore $PROJECT
-      
-      - name: Install Microsoft.NETCore.App targeting pack
-        run: dotnet workload install Microsoft.NETCore.App
 
       - name: Build package
         run: dotnet build $PROJECT -c $BUILD_CONFIG -p:Version=$BUILD_VERSION --no-restore
