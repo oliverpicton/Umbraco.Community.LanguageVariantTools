@@ -19,6 +19,7 @@
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RootNamespace>Umbraco.Community.VariantTools</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
