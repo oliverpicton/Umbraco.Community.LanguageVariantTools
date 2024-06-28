@@ -3,6 +3,7 @@
 		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<IsPackable>true</IsPackable>
 		<PackageId>Umbraco.Community.LanguageVariantTools</PackageId>
 		<Product>Umbraco.Community.LanguageVariantTools</Product>
 		<Title>Language variant tools for Umbraco</Title>
@@ -19,6 +20,10 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
 		<PackageReference Include="Umbraco.Cms.Web.Website" Version="10.*" />
