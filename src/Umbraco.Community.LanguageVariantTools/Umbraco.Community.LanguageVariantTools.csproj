@@ -11,12 +11,13 @@
 		<PackageTags>umbraco plugin package umbraco-marketplace Language Variant Multi Language Copy Variants Remove Variants</PackageTags>
 		<StaticWebAssetBasePath>App_Plugins/LanguageVariantTools</StaticWebAssetBasePath>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Version>1.0.0</Version>
+		<Version>1.0.2-beta</Version>
 		<Authors>Oliver Picton</Authors>
 		<Copyright>$([System.DateTime]::UtcNow.ToString(`yyyy`)) © Oliver Picton</Copyright>
 		<PackageProjectUrl>https://github.com/oliverpicton/Umbraco.Community.LanguageVariantTools</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/oliverpicton/Umbraco.Community.LanguageVariantTools</RepositoryUrl>
 		<PackageReadmeFile>Readme.md</PackageReadmeFile>
+		<PackageReleaseNotes>Added .NET 8 &amp; Umbraco 13 support</PackageReleaseNotes>
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RootNamespace>Umbraco.Community.LanguageVariantTools</RootNamespace>
