@@ -1,12 +1,11 @@
-﻿
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Web.BackOffice.Controllers;
 using Umbraco.Cms.Web.Common.Attributes;
 using Umbraco.Community.LanguageVariantTools.Models;
 using Umbraco.Extensions;
-using System.Linq;
+using Umbraco.Cms.Core.Models.Blocks;
 
 namespace Umbraco.Community.LanguageVariantTools.Controllers
 {
@@ -16,12 +15,25 @@ namespace Umbraco.Community.LanguageVariantTools.Controllers
         private readonly IContentService _contentService;
         private readonly ILocalizationService _localizationService;
         private readonly ILogger<LanguageVariantController> _logger;
+        private readonly ITranslationService _translationService;
 
-        public LanguageVariantController(IContentService contentService, ILocalizationService localizationService, ILogger<LanguageVariantController> logger)
+        public LanguageVariantController(IContentService contentService, ILocalizationService localizationService, ITranslationService translationService, ILogger<LanguageVariantController> logger)
         {
             _contentService = contentService;
             _localizationService = localizationService;
+            _translationService = translationService;
             _logger = logger;
+        }
+
+
+        // Helper method to determine if the property is a simple text type
+        private bool IsSimpleTextType(IProperty property)
+        {
+            // Check the property editor alias or type to determine if it is a text type
+            var simpleTextTypes = new[] { "Umbraco.TextBox", "Umbraco.TextboxMultiple" };
+            var isSimpleType = simpleTextTypes.Contains(property.PropertyType.PropertyEditorAlias);
+
+            return isSimpleType;
         }
 
         public VariantResult Remove(int nodeId, string culture)
@@ -91,8 +103,34 @@ namespace Umbraco.Community.LanguageVariantTools.Controllers
 
             return response;
         }
-    
-        public VariantResult Create(int? nodeId, bool includeChildren, string culture)
+
+        private void HandBlockList(BlockListModel blockList)
+        {
+            foreach (var block in blockList)
+            {
+                if (block.Content is BlockListItem blockListItem)
+                {
+                    foreach (var property in blockListItem.Content.Properties)
+                    {
+                        if (property.GetValue() is string textValue)
+                        {
+                            Console.WriteLine($"Property Alias: {property.Alias}, Value: {textValue}");
+                        }
+                        else if (property.GetValue() is BlockListModel nestedBlockList)
+                        {
+                            Console.WriteLine($"Nested Block List Property Alias: {property.Alias}");
+                            HandBlockList(nestedBlockList);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Property Alias: {property.Alias}, Type: {property.GetValue().GetType().Name}");
+                        }
+                    }
+                }
+            }
+        }
+
+        public VariantResult Create(int? nodeId, bool includeChildren, bool translate, string culture)
         {
             var response = new VariantResult
             {
@@ -141,11 +179,20 @@ namespace Umbraco.Community.LanguageVariantTools.Controllers
 
                         if (value is not null)
                         {
-                            try
+                            if (IsSimpleTextType(property))
+                            {
+                                string translatedValue = _translationService.Translate(value.ToString(), targetCulture).Result;
+
+                                content.SetValue(property.Alias, translatedValue, targetCulture);
+                            }
+                            else if (property.GetValue() is BlockListModel blockList)                            
+                            {
+                                HandBlockList(blockList);
+                            }
+                            else
                             {
                                 content.SetValue(property.Alias, value, targetCulture);
                             }
-                            catch { continue; }
                         }
                     }
                 }

@@ -20,6 +20,16 @@
                     <span class="umb-toggle__label umb-toggle__label--right"><localize key="dialog_includeChildItemsLabel">Include all items below</localize></span>
                 </span>
             </button>
+            <button role="checkbox" aria-checked="{{translate}}" ng-click="translateClick()" type="button" class="umb-toggle" ng-class="{'umb-toggle--checked': translate}">
+                <div class="umb-toggle__toggle">
+                    <umb-icon ng-show="hideIcons !== 'true'" icon="icon-check" class="umb-toggle__icon umb-toggle__icon--left"></umb-icon>
+                    <umb-icon ng-show="hideIcons !== 'true'" icon="icon-wrong" class="umb-toggle__icon umb-toggle__icon--right"></umb-icon>
+                    <div class="umb-toggle__handler"></div>
+                </div>
+                <span>
+                    <span class="umb-toggle__label umb-toggle__label--right"><localize key="dialog_translateLabel">Translate text?</localize></span>
+                </span>
+            </button>
             <br />
             <button type="button" class="btn btn-link" ng-click="closeDialog()">
                 <localize key="dialog_cancel">Cancel</localize>

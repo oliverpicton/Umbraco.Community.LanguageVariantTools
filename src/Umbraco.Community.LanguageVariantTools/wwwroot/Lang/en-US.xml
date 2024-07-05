@@ -5,6 +5,7 @@
 		<key alias="confirmationMessage2">to all variants?</key>
 		<key alias="buttonCreateLabel">Create content for all Variants</key>
 		<key alias="includeChildItemsLabel">Include all items below</key>
+		<key alias="translateLabel">Translate?</key>
 		<key alias="succesMessage">variants created</key>
 		<key alias="errorTitle">Error</key>
 		<key alias="cancel">Cancel</key>

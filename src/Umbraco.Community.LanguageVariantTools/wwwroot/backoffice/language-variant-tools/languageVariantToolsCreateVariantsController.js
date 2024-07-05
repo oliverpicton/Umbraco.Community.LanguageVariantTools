@@ -4,6 +4,7 @@
     $scope.error = false;
     $scope.errorMessage = "";
     $scope.includeChildren = false;
+    $scope.translate = false;
 
     $scope.createVariants = async function (nodeId) {
         $scope.busy = true;
@@ -19,6 +20,7 @@
             params: {
                 nodeId: nodeId,
                 includeChildren: $scope.includeChildren,
+                translate: $scope.translate,
                 culture: culture
             },
             url: "backoffice/LanguageVariantTools/LanguageVariant/Create/"
@@ -38,7 +40,11 @@
         navigationService.hideDialog();
         location.reload();
     };
-    $scope.includeChilderenClick = function () {
-        $scope.includeChilderen = !$scope.includeChilderen
+    $scope.includeChildrenClick = function () {
+        $scope.includeChildren = !$scope.includeChildren;
+    };
+
+    $scope.translateClick = function () {
+        $scope.translate = !$scope.translate;
     };
 });
