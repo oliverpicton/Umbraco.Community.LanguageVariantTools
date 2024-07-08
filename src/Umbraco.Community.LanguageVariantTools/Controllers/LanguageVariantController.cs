@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Web.BackOffice.Controllers;
@@ -156,7 +155,7 @@ namespace Umbraco.Community.LanguageVariantTools.Controllers
             return new VariantResult
             {
                 IsSuccess = true,
-            };          
+            };   
         }
     }
 }
