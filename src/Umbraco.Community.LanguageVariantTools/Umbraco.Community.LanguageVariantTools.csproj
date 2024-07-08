@@ -17,7 +17,7 @@
 		<PackageProjectUrl>https://github.com/oliverpicton/Umbraco.Community.LanguageVariantTools</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/oliverpicton/Umbraco.Community.LanguageVariantTools</RepositoryUrl>
 		<PackageReadmeFile>Readme.md</PackageReadmeFile>
-		<PackageReleaseNotes>Fixed bug with remove language variant feature. It now correctly removes the property values when removing a language variant.</PackageReleaseNotes>
+		<PackageReleaseNotes></PackageReleaseNotes>
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RootNamespace>Umbraco.Community.LanguageVariantTools</RootNamespace>
