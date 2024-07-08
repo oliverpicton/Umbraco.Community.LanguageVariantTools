@@ -55,10 +55,10 @@
 
 	<ItemGroup>
 	  <Content Update="wwwroot\backoffice\language-variant-tools\createVariants.html">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </Content>
 	  <Content Update="wwwroot\backoffice\language-variant-tools\removeVariant.html">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </Content>
 	</ItemGroup>
 </Project>
