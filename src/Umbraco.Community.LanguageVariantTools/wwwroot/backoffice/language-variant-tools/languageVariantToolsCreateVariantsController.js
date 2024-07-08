@@ -38,7 +38,7 @@
         navigationService.hideDialog();
         location.reload();
     };
-    $scope.includeChilderenClick = function () {
-        $scope.includeChilderen = !$scope.includeChilderen
+    $scope.includeChildrenClick = function () {
+        $scope.includeChildren = !$scope.includeChildren;
     };
 });
