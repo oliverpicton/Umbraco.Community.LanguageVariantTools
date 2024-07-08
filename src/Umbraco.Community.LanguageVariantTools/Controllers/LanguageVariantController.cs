@@ -5,7 +5,6 @@ using Umbraco.Cms.Web.BackOffice.Controllers;
 using Umbraco.Cms.Web.Common.Attributes;
 using Umbraco.Community.LanguageVariantTools.Models;
 using Umbraco.Extensions;
-using System.Linq;
 
 namespace Umbraco.Community.LanguageVariantTools.Controllers
 {
@@ -23,27 +22,21 @@ namespace Umbraco.Community.LanguageVariantTools.Controllers
             _logger = logger;
         }
 
-        public VariantResult Remove(int nodeId, string culture)
+        public VariantResult Remove(int? nodeId, string culture)
         {
-            var content = _contentService.GetById(nodeId);
+            ValidateArguments(nodeId, culture);
+
+            var content = _contentService.GetById(nodeId.Value);
 
             var response =  new VariantResult
             {
                 IsSuccess = false,
             };
-
+            
             if (content == null)
             {
-                var message = "No content node found with id {Id}.";
-                _logger.LogCritical(message, nodeId);
-                response.AddError(message, nodeId);
-                return response;
-            }
-
-            if (string.IsNullOrEmpty(culture))
-            {
-                var message = "Provided culture is null or empty.";
-                _logger.LogCritical(message);
+                var message = "No content found";
+                _logger.LogCritical($"{message}. Content node Id is {{NodeId}}", nodeId);
                 response.AddError(message);
                 return response;
             }
@@ -67,7 +60,7 @@ namespace Umbraco.Community.LanguageVariantTools.Controllers
                 }
 
                 var result = _contentService.Save(content);
-
+                
                 if (result.Success)
                 {
                     response.IsSuccess = true;
@@ -75,17 +68,17 @@ namespace Umbraco.Community.LanguageVariantTools.Controllers
                 else
                 {
                     var message = "Failed to save content";
-                    _logger.LogCritical(message, culture);
+                    _logger.LogCritical(message);
 
-                    response.AddError(message, culture);
+                    response.AddError(message);
                 }
             }
             else
             {
-                var message = "Culture {culture} not found in the collection.";
-                _logger.LogCritical(message, culture);
+                var message = "This language variant has already been removed.";
+                _logger.LogCritical($"{message}. Culture is {{Culture}}",culture);
 
-                response.AddError(message, culture);
+                response.AddError(message);
             }
 
             return response;
@@ -93,23 +86,21 @@ namespace Umbraco.Community.LanguageVariantTools.Controllers
     
         public VariantResult Create(int? nodeId, bool includeChildren, string culture)
         {
+            ValidateArguments(nodeId, culture);
+
             var response = new VariantResult
             {
                 IsSuccess = false
             };
 
-            if (nodeId is null)
-            {
-                response.AddError("NodeId is not set");
-                return response;
-            }
-
             var contentItems = new List<IContent>();
             var contentItem = _contentService.GetById(nodeId.Value);
 
             if (contentItem == null)
-            {                  
-                response.AddError("content is not found");
+            {
+                var message = "No content found";
+                _logger.LogCritical($"{message}. Content node Id is {{NodeId}}", nodeId);
+                response.AddError(message);
                 return response;
             }
 
@@ -150,12 +141,19 @@ namespace Umbraco.Community.LanguageVariantTools.Controllers
                 }
 
                 _contentService.Save(content);
+                response.IsSuccess = true;
             }
 
-            return new VariantResult
+            return response;
+        }
+
+        private static void ValidateArguments(int? nodeId, string culture)
+        {
+            ArgumentNullException.ThrowIfNull(nodeId);
+            if (string.IsNullOrWhiteSpace(culture))
             {
-                IsSuccess = true,
-            };   
+                throw new ArgumentException("Argument culture was not provided");
+            }
         }
     }
 }

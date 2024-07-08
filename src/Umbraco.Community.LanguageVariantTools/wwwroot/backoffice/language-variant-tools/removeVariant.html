@@ -17,18 +17,18 @@
                 <umb-loader />
             </div>
         </div>
-            <div ng-show="error">
-                <div class="alert alert-error">
-                    <div><strong><localize key="enjoy_removeLanguageVariant_errorTitle">Error</localize></strong></div>
-                    <div>test</div>
-                </div>
-            </div>
-            <div ng-show="success">
-                <div class="alert alert-success">
-                    <strong>{{currentNode.name}}</strong>
-                    <span><localize key="enjoy_removeLanguageVariant_successMessage">language variant removed</localize></span>
-                </div>
-                <button class="btn btn-primary" ng-click="closeDialog()"><localize key="enjoy_removeLanguageVariant_ok">Ok</localize></button>
+        <div ng-show="error">
+            <div class="alert alert-error">
+                <div><strong><localize key="enjoy_removeLanguageVariant_errorTitle">Error</localize></strong></div>
+                <span>{{errorMessage}}</span>
             </div>
         </div>
+        <div ng-show="success">
+            <div class="alert alert-success">
+                <strong>{{currentNode.name}}</strong>
+                <span><localize key="enjoy_removeLanguageVariant_successMessage">language variant removed</localize></span>
+            </div>
+            <button class="btn btn-primary" ng-click="closeDialog()"><localize key="enjoy_removeLanguageVariant_ok">Ok</localize></button>
+        </div>
     </div>
+</div>

@@ -28,7 +28,8 @@
             $scope.success = true;
         }
         else {
-            $scope.errorMessage = $scope.data.Error.Message;
+            console.log(result.data.Error.Messag);
+            $scope.errorMessage = result.data.Error.Message;
             $scope.error = true;
         }
 

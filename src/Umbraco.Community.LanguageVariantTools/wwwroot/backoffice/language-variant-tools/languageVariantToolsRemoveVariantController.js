@@ -26,7 +26,7 @@
             $scope.success = true;
         }
         else {
-            $scope.errorMessage = $scope.data.Error.Message;
+            $scope.errorMessage = result.data.Error.Message;
             $scope.error = true;
         }
 

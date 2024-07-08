@@ -1,4 +1,4 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Text.Json.Serialization;
 
 namespace Umbraco.Community.LanguageVariantTools.Models
 {
@@ -8,17 +8,8 @@ namespace Umbraco.Community.LanguageVariantTools.Models
 
         public Error? Error { get; private set; }
 
-        public void AddError(string message, params object?[] arg)
+        public void AddError(string message)
         {
-            if (arg != null && arg.Length > 0)
-            {
-                message = Regex.Replace(message, @"\{(\d+)\}", match =>
-                {
-                    int index = int.Parse(match.Groups[1].Value);
-                    return index < arg.Length ? arg[index]?.ToString() ?? string.Empty : match.Value;
-                });
-            }
-
             Error = new Error { Message = message };
         }
     }
