@@ -15,7 +15,7 @@ jobs:
     env:
       BUILD_CONFIG: "Release"
       PROJECT: "./src/Umbraco.Community.LanguageVariantTools/Umbraco.Community.LanguageVariantTools.csproj"
-      BUILD_VERSION: ${{ github.event.release.tag_name || '1.0.3-beta' }}
+      BUILD_VERSION: ${{ github.event.release.tag_name || '1.0.4-beta' }}
 
     runs-on: ubuntu-latest
 
