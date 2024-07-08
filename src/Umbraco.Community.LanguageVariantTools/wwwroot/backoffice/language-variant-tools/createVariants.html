@@ -1,6 +1,6 @@
 ﻿<div class="umb-dialog umb-pane" ng-controller="languageVariantToolsCreateVariantsController">
     <div class="umb-dialog-body">
-        <div ng-hide="success">
+        <div ng-hide="success || error">
             <p class="umb">
                 <localize key="dialog_confirmationMessage">
                     Are you sure you want to add content(
@@ -33,9 +33,9 @@
         </div>
         <div ng-show="error">
             <div class="alert alert-error">
-                <div><strong><localize key="dialog_errorTitle">Error</localize></strong></div>
                 <span>{{errorMessage}}</span>
             </div>
+            <button class="btn btn-primary" ng-click="closeDialog()"><localize key="dialog_ok">Ok</localize></button>
         </div>
         <div ng-show="success">
             <div class="alert alert-success">
