@@ -2,16 +2,16 @@
     <div class="umb-dialog-body">
         <div ng-hide="success || error">
             <p class="umb">
-                <localize key="enjoy_removeLanguageVariant_confirmationMessage">
-                    Are you sure you want to remove this language variant?
+                <localize key="removeConfirmation">
+                    Are you sure you want to remove this variant?
                 </localize>
             </p>
           
             <button type="button" class="btn btn-link" ng-click="closeDialog()">
-                <localize key="enjoy_removeLanguageVariant_cancel">Cancel</localize>
+                <localize key="cancel">Cancel</localize>
             </button>
             <button ng-hide="busy" type="button" class="btn btn-primary" ng-click="removeVariant(currentNode.id)">
-                <localize key="enjoy_removeLanguageVariant_buttonCreateLabel">Remove language variant</localize>
+                <localize key="buttonRemove">Remove variant</localize>
             </button>
             <div ng-if="busy" style="position: relative;">
                 <umb-loader />
@@ -19,17 +19,17 @@
         </div>
         <div ng-show="error">
             <div class="alert alert-error">
-                <div><strong><localize key="enjoy_removeLanguageVariant_errorTitle">Error:</localize></strong>&nbsp;</div>
+                <div><strong><localize key="errorTitle">Error:</localize></strong>&nbsp;</div>
                 <span>{{errorMessage}}</span>
             </div>
-            <button class="btn btn-primary" ng-click="closeDialog()"><localize key="dialog_ok">Ok</localize></button>
+            <button class="btn btn-primary" ng-click="closeDialog()"><localize key="ok">Ok</localize></button>
         </div>
         <div ng-show="success">
             <div class="alert alert-success">
                 <strong>{{currentNode.name}}</strong>
-                <span><localize key="enjoy_removeLanguageVariant_successMessage">language variant removed</localize></span>
+                <span><localize key="successMessage">variant removed</localize></span>
             </div>
-            <button class="btn btn-primary" ng-click="closeDialog()"><localize key="dialog_ok">Ok</localize></button>
+            <button class="btn btn-primary" ng-click="closeDialog()"><localize key="ok">Ok</localize></button>
         </div>
     </div>
 </div>

@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <language alias="en_gb" intName="English (GB)" localName="English (GB)" lcid="" culture="en-GB">
 	<area alias="dialog">
-		<key alias="confirmationMessage">Are you sure you want to add your content</key>
-		<key alias="confirmationMessage2">to all variants?</key>
-		<key alias="buttonCreateLabel">Create content for all Variants</key>
-		<key alias="includeChildItemsLabel">Include all items below</key>
-		<key alias="succesMessage">variants created</key>
+		<key alias="createConfirmation">Are you sure you want to add your content</key>
+		<key alias="removeConfirmation">Are you sure you want to remove this variant?</key>
+		<key alias="allVariants">to all variants?</key>
+		<key alias="buttonCreate">Create content for all variants</key>
+		<key alias="buttonRemove">Create content for all variants</key>
+		<key alias="includeChildItems">Include all items below</key>
+		<key alias="successMessage">variants created</key>
 		<key alias="errorTitle">Error</key>
 		<key alias="cancel">Cancel</key>
 		<key alias="ok">Ok</key>
